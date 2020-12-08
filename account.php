@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div>
                             <span>Mobile<label>*</label></span>
-                            <input type="text" name="mobile" placeholder="Enter Mobile Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}$" maxlength="12" required>
+                            <input type="text" name="mobile" placeholder="Enter Mobile Number" pattern="^[0][1-9]{1}[0-9]{9}$" maxlength="12" required>
                         </div>
                         <div>
                             <select name="select" id="sel" style="margin-bottom:2px;">
