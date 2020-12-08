@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Php version 7.2.10
  * 
@@ -43,15 +44,17 @@ class DB
     }
     public function checkinsert($email, $mobile)
     {
-        $result1 = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `email`='$email' ");
+        $result1 = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `email`='$email' AND `mobile`='$mobile' ");
         if (mysqli_num_rows($result1) > 0) {
-            echo "<script>alert('Email Already Present')</script>";
-            return $result1->num_rows;
-        }
-        $result2 = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `mobile`='$mobile' ");
-        if (mysqli_num_rows($result2) > 0) {
-            echo "<script>alert('Mobile Already Present')</script>";
-            return $result2->num_rows;
+            while ($row = $result1->fetch_assoc()) {
+                if ($row['email'] == $email) {
+                    echo "<script>alert('Email Already Exist')</script>";
+                    return $result1->num_rows;
+                } elseif ($row['mobile'] == $mobile) {
+                    echo "<script>alert('Mobile Already Exist')</script>";
+                    return $result1->num_rows;
+                }
+            }
         }
     }
 }

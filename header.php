@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Php version 7.2.10
  * 
@@ -11,7 +12,7 @@
 if (!empty(isset($_SESSION['userdata']))) {
     $username = $_SESSION['userdata']['username'];
     $user = $_SESSION['userdata']['user_id'];
-} 
+}
 ?>
 <!--
 Author: W3layouts
@@ -29,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Planet Hosting Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+     Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript">
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
@@ -46,6 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!---fonts-->
+
     <!--script-->
     <script src="js/modernizr.custom.97074.js"></script>
     <script src="js/jquery.chocolat.js"></script>
@@ -64,6 +66,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $(this).hoverdir();
             });
 
+        });
+    </script>
+    <!--script-->
+    <!--script-->
+    <link rel="stylesheet" href="css/swipebox.css">
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $(".swipebox").swipebox();
         });
     </script>
     <!--script-->
@@ -94,36 +105,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li class="active"><a href="index.php">Home <i class="sr-only">(current)</i></a></li>
                             <li><a href="about.php">About</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<i class="caret"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Hosting</a></li>
-                                    <!-- <li><a href="pricing.html">Pricing</a></li>
-											<li><a href="faq.html">FAQ's</a></li>
+                                <a href="services.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                                <!-- <ul class="dropdown-menu"> -->
+                                <!-- <li><a href="#">Hosting</a></li> -->
+                                <!-- <li><a href="pricing.html">Pricing</a></li> -->
+                                <!-- <li><a href="faq.html">FAQ's</a></li>
 											<li><a href="testimonials.html">Testimonials</a></li>
 											<li><a href="history.html">History</a></li>
 											<li><a href="support.html">Support</a></li>
 											<li><a href="templatesetting.html">Template setting</a></li>
 											<li><a href="login.html">Login</a></li>
 											<li><a href="portfolio.html">Portfolio</a></li> -->
-                                </ul>
+                                <!-- </ul> -->
                             </li>
-                            <!-- <li><a href="services.html">Services</a></li> -->
-                            <!-- <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pricing</i></a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Linux hosting</a></li>
                                     <li><a href="#">WordPress Hosting</a></li>
                                     <li><a href="#">Windows Hosting</a></li>
                                     <li><a href="#">CMS Hosting</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
+                            <li><a href="pricing.html">Pricing</a></li>
                             <li><a href="blog.php">Blog</a></li>
                             <li><a href="contact.php">Contact</a></li>
                             <li><a href="#">Cart&nbsp;<i class="fa fa-shopping-cart"></i></a></li>
                             <?php if (isset($username)) { ?>
                                 <li><a href="logout.php">Logout</a></li>
                             <?php } else { ?>
-                            <li><a href="login.php">Login</a></li>
+                                <li><a href="login.php">Login</a></li>
                             <?php } ?>
                         </ul>
                     </div><!-- /.navbar-collapse -->
