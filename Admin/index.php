@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if (isset($_SESSION['userdata'])) {
+    $username = $_SESSION['userdata']['username'];
+} else {
+    echo "<script>alert('Permission Denied');
+    window.location.href='../login.php';</script>";
+}
+?>
 <!--
 =========================================================
 * Argon Dashboard - v1.2.0
@@ -21,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title>Ced-Hosting</title>
   <!-- Favicon -->
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -80,10 +90,16 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/login.html">
-                <i class="ni ni-key-25 text-info"></i>
-                <span class="nav-link-text">Login</span>
-              </a>
+                <?php if (isset($_SESSION['userdata'])) { ?>
+                <a class="nav-link" href="../logout.php">
+                  <i class="ni ni-key-25 text-info"></i>
+                  <span class="nav-link-text">Logout</span>
+                <?php } else { ?>
+                  <a class="nav-link" href="../login.php">
+                    <i class="ni ni-key-25 text-info"></i>
+                    <span class="nav-link-text">Login</span>
+                    <?php } ?>
+                  </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="examples/register.html">
@@ -368,10 +384,15 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
-                </a>
+                    <?php if (isset($_SESSION['userdata'])) {?>
+                    <a href="../logout.php" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span></a>
+                    <?php } else {?>
+                    <a href="../login.php" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Login</span></a>
+                    <?php } ?>
               </div>
             </li>
           </ul>
