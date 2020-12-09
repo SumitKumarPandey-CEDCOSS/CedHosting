@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Php version 7.2.10
  * 
@@ -13,12 +14,12 @@ class User extends DB
     //login function
     public function login($email, $password)
     {
-        $email_approved = 0;
+        $email_approved = 1;
         $phone_approved = 0;
-        $active = 0;
+        $active = 1;
         $sql = 'SELECT * FROM tbl_user WHERE `email`="' . $email . '" AND 
-        `password`="' . $password . '" AND `email_approved`="' . $email_approved. '" AND 
-        `phone_approved`="' . $phone_approved. '" AND `active`="' . $active. '" ';
+        `password`="' . $password . '" AND `email_approved`="' . $email_approved . '" OR 
+        `phone_approved`="' . $phone_approved . '" AND `active`="' . $active . '" ';
         $result = $this->conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -38,6 +39,33 @@ class User extends DB
                     </script>";
                 }
             }
+        }
+    }
+    public function verify($code)
+    {
+        $sql = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `activationcode`='$code' ");
+        $num = mysqli_fetch_array($sql);
+        if ($num > 0) {
+            $st = 0;
+            $result = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `activationcode`='$code' and `active` = '$st' ");
+            $result4 = mysqli_fetch_array($result);
+            if ($result4 > 0) {
+                $st = 1;
+                $result1 = mysqli_query($this->conn, "UPDATE tbl_user SET `active`='$st', `email_approved`='$st' WHERE `activationcode` = '$code' ");
+                $msg = "Your account is activated";
+            } else {
+                $msg = "Your account is already active, no need to activate again";
+            }
+        } else {
+            $msg = "Wrong activation code.";
+        }
+        return $msg;
+    }
+    public function checkverify($email, $password) 
+    {
+        $sql = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `email`='$email' OR `password`='$password' AND `active`=0 ");
+        if (mysqli_num_rows($sql)>0) {
+            return $sql;
         }
     }
 }

@@ -23,6 +23,7 @@ if (isset($_POST['submit'])) {
     $sec_ans = $_POST['sec_ans'];
     $password = md5($_POST['pass']);
     $confirmpass = md5($_POST['confirmpass']);
+    $activation_code = bin2hex(random_bytes(15));
 
     // Password Matching
     if ($password != $confirmpass) {
@@ -30,12 +31,18 @@ if (isset($_POST['submit'])) {
     }
     $err = $db->checkinsert($email, $mobile);
     if ($err == 0) {
-        $fields = array('name', 'mobile', 'email', 'security_question', 'security_answer', 'password');
-        $values = array($name, $mobile, $email, $sec_ques, $sec_ans, $password);
+        $fields = array('name', 'mobile', 'email', 'security_question',
+        'security_answer', 'password', 'activationcode'
+        );
+        $values = array($name, $mobile, $email, $sec_ques, $sec_ans, $password,
+        $activation_code);
         $sql = $db->insert($fields, $values, 'tbl_user');
+        include 'email_verify.php';
         if ($sql) {
             echo "<script>alert('Signup Successfully');
-            window.location.href='login.php';</script>";
+            window.location.href='verifyPage.php';</script>";
+            $_SESSION['data']=array('email'=>$email, 'mobile'=>$mobile,
+            'code'=>$activation_code);
         }
     }
 }
@@ -65,15 +72,15 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div>
                             <span>Email Address<label>*</label></span>
-                            <input type="email" name="address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" required>
+                            <input type="email" name="address" pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$" placeholder="Enter Email" required>
                         </div>
                         <div>
                             <span>Mobile<label>*</label></span>
-                            <input type="text" name="mobile" placeholder="Enter Mobile Number" pattern="^[0][1-9]{1}[0-9]{9}$" maxlength="12" required>
+                            <input type="text" name="mobile" placeholder="Enter Mobile Number" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" maxlength="12" required>
                         </div>
                         <div>
                             <select name="select" id="sel" style="margin-bottom:2px;">
-                                <option value="0">Security Question</option>
+                                <option selected>Security Question</option>
                                 <option value="1">Your Pet Name</option>
                                 <option value="2">Your Favourite Color</option>
                                 <option value="3">What was your childhood nickname?</option>
@@ -82,7 +89,7 @@ if (isset($_POST['submit'])) {
                                 <option value="6">What was your dream job as a child?</option>
                                 <option value="7">What is your favourite teacher's nickname?</option>
                             </select><label>*</label>
-                            <input type="text" name="sec_ans" placeholder="Enter Security Answer" required>
+                            <input type="text" name="sec_ans" pattern="^([A-Za-z0-9]+ )+[A-Za-z0-9]+$|^[A-Za-z0-9]+$" placeholder="Enter Security Answer" required>
                         </div>
                         <div class="clearfix"> </div>
                         <a class="news-letter" href="#">
@@ -97,7 +104,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div>
                             <span>Confirm Password<label>*</label></span>
-                            <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" class="password"  name="confirmpass" minlength="8" maxlength="16" required>
+                            <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" class="password" name="confirmpass" minlength="8" maxlength="16" required>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
@@ -111,10 +118,5 @@ if (isset($_POST['submit'])) {
     </div>
     <!-- registration -->
 </div>
-<!-- <script>
-       $(".password").keyup(function() {
-        $(this).val($(this).val().replace(/\s/g, ""));
-    });
-</script> -->
 <!-- login -->
 <?php require 'footer.php'; ?>
