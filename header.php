@@ -9,6 +9,14 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://localhost/training/php%20mysql%20task1/register/signup.php
  */
+
+require_once 'class/DbClass.php';
+require_once 'class/userClass.php';
+require_once 'class/product_class.php';
+$db = new Product();
+$db->connect('localhost', 'root', '', 'CedHosting');
+$sql1 = $db->Category_name();
+$sql = $db->Sub_category();
 if (!empty(isset($_SESSION['userdata']))) {
     $username = $_SESSION['userdata']['username'];
     $user = $_SESSION['userdata']['user_id'];
@@ -119,12 +127,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <!-- </ul> -->
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
+                                <?php foreach ($sql1 as $key) { ?>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $key['prod_name'] ?><i class="caret"></i></a>
+                                <?php } ?>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Linux hosting</a></li>
-                                    <li><a href="#">WordPress Hosting</a></li>
-                                    <li><a href="#">Windows Hosting</a></li>
-                                    <li><a href="#">CMS Hosting</a></li>
+                                    <?php foreach ($sql as $key) { ?>
+                                        <li><a href="<?php echo $key['link'] ?>"><?php echo $key['prod_name']; ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li><a href="pricing.html">Pricing</a></li>

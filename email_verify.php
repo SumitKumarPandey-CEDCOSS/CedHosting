@@ -9,9 +9,11 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://localhost/training/php%20mysql%20task1/register/signup.php
  */
+session_start();
 require "vendor/autoload.php";
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
+if (isset($_SESSION['data'])) {
+    $email = $_SESSION['data']['email'];
+    $activation_code = $_SESSION['data']['code'];
 }
 $robo = 'mastertron399@gmail.com';
 
@@ -39,7 +41,7 @@ try {
     $mailer->Host = 'ssl://smtp.gmail.com';
     $mailer->SMTPAuth = true;
     $mailer->Username = 'mastertron399@gmail.com';
-    $mailer->Password = '';
+    $mailer->Password = '9125457091';
     $mailer->SMTPSecure = 'ssl';
     $mailer->Port = 465;
 
@@ -54,6 +56,7 @@ try {
     $mailer->send();
     $mailer->ClearAllRecipients();
     echo "MAIL HAS BEEN SENT SUCCESSFULLY";
+    echo "<script>window.location.href='PageVerify.php'</script>";
 } catch (Exception $e) {
     echo "EMAIL SENDING FAILED. INFO: " . $mailer->ErrorInfo;
 }

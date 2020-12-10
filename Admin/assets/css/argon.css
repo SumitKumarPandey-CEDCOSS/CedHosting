@@ -21398,6 +21398,9 @@ textarea[resize='horizontal']
 {
     max-width: 100%;
     max-height: 2rem;
+    max-height: 8rem;
+    margin: -2em;
+    padding: 1px;
 }
 @media (min-width: 768px)
 {
@@ -29837,4 +29840,7 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 .bootstrap-datetimepicker-widget.dropdown-black table td .btn[data-action='togglePeriod']
 {
     background: transparent;
+}
+#sel1 {
+    -webkit-appearance: none;
 }

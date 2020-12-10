@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Php version 7.2.10
  * 
@@ -30,19 +31,23 @@ if (isset($_POST['submit'])) {
         $error = array('input' => 'password', 'msg' => 'password doesnt match');
     }
     $err = $db->checkinsert($email, $mobile);
-    if ($err == 0) {
-        $fields = array('name', 'mobile', 'email', 'security_question',
-        'security_answer', 'password', 'activationcode'
+    if ($err == 0 && (sizeof($error) == 0)) {
+        $fields = array(
+            'name', 'mobile', 'email', 'security_question',
+            'security_answer', 'password', 'activationcode'
         );
-        $values = array($name, $mobile, $email, $sec_ques, $sec_ans, $password,
-        $activation_code);
+        $values = array(
+            $name, $mobile, $email, $sec_ques, $sec_ans, $password,
+            $activation_code
+        );
         $sql = $db->insert($fields, $values, 'tbl_user');
-        include 'email_verify.php';
         if ($sql) {
+            $_SESSION['data'] = array(
+                'email' => $email, 'mobile' => $mobile,
+                'code' => $activation_code
+            );
             echo "<script>alert('Signup Successfully');
             window.location.href='verifyPage.php';</script>";
-            $_SESSION['data']=array('email'=>$email, 'mobile'=>$mobile,
-            'code'=>$activation_code);
         }
     }
 }
@@ -81,8 +86,6 @@ if (isset($_POST['submit'])) {
                         <div>
                             <select name="select" id="sel" style="margin-bottom:2px;">
                                 <option selected>Security Question</option>
-                                <option value="1">Your Pet Name</option>
-                                <option value="2">Your Favourite Color</option>
                                 <option value="3">What was your childhood nickname?</option>
                                 <option value="4">What is the name of your favourite childhood friend?</option>
                                 <option value="5">What was your favourite place to visit as a child?</option>

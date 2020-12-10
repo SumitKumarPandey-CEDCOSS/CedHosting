@@ -15,7 +15,7 @@ class User extends DB
     public function login($email, $password)
     {
         $email_approved = 1;
-        $phone_approved = 0;
+        $phone_approved = 1;
         $active = 1;
         $sql = 'SELECT * FROM tbl_user WHERE `email`="' . $email . '" AND 
         `password`="' . $password . '" AND `email_approved`="' . $email_approved . '" OR 
@@ -44,8 +44,7 @@ class User extends DB
     public function verify($code)
     {
         $sql = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `activationcode`='$code' ");
-        $num = mysqli_fetch_array($sql);
-        if ($num > 0) {
+        if (mysqli_num_rows($sql) > 0) {
             $st = 0;
             $result = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `activationcode`='$code' and `active` = '$st' ");
             $result4 = mysqli_fetch_array($result);
@@ -58,8 +57,9 @@ class User extends DB
             }
         } else {
             $msg = "Wrong activation code.";
+            return $sql;
         }
-        return $msg;
+        return $sql;
     }
     public function checkverify($email, $password) 
     {

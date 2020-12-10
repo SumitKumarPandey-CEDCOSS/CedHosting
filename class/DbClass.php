@@ -44,7 +44,7 @@ class DB
     }
     public function checkinsert($email, $mobile)
     {
-        $result1 = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `email`='$email' AND `mobile`='$mobile' ");
+        $result1 = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `email`='$email' OR `mobile`='$mobile' ");
         if (mysqli_num_rows($result1) > 0) {
             while ($row = $result1->fetch_assoc()) {
                 if ($row['email'] == $email) {
