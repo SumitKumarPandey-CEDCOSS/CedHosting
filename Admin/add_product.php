@@ -15,14 +15,6 @@ require '../class/product_class.php';
 $db = new Product();
 $db->connect('localhost', 'root', '', 'CedHosting');
 $sql2=$db->Sub_Category();
-// if (isset($_POST['submit'])) {
-//     $category = $_POST['sel1'];
-//     $prod_name= $_POST['prod_name'];
-//     $url = $_POST['url'];
-//     $monthly_price = $_POST['montly_price'];
-//     $annual_price = $_POST['annual_price'];
-//     $sku = $_POST['sku'];
-// }
 require 'AdminHeader.php';
 ?>
 <div class="col-xl-8 order-xl-1 m-5">
