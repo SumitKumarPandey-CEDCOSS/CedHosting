@@ -1,43 +1,11 @@
-<!--
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-
-
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
-
-
-
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>Ced-Hosting</title>
-  <!-- Favicon -->
-  <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <!-- Icons -->
-  <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-  <!-- Page plugins -->
-  <!-- Argon CSS -->
-  <script src="jquery-3.5.1.min.js"></script>
-  
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
-
-</head>
-
-<body>
+<?php 
+if (isset($_SESSION['userdata'])) {
+  $username = $_SESSION['userdata']['username'];
+} else {
+  echo "<script>alert('Permission Denied');
+  window.location.href='../login.php';</script>";
+}
+?>
   <!--
 =========================================================
 * Argon Dashboard - v1.2.0
@@ -90,7 +58,7 @@
             <!-- Nav items -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="examples/dashboard.html">
+                <a class="nav-link active" href="index.php">
                   <i class="ni ni-tv-2 text-primary"></i>
                   <span class="nav-link-text">Dashboard</span>
                 </a>
@@ -100,7 +68,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="category.php" class="nav-link">Create Category</a></li>
                   <li><a href="add_product.php" class="nav-link">Add Product</a></li>
-                  <li><a href="#" class="nav-link">View Products</a></li>
+                  <li><a href="viewproduct.php" class="nav-link">View Products</a></li>
                   <li><a href="#" class="nav-link">Create New Offers</a></li>
                 </ul>
               </li>

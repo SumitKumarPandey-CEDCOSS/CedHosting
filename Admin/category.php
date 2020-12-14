@@ -14,7 +14,7 @@ require '../class/userClass.php';
 require '../class/product_class.php';
 $db = new Product();
 $db->connect('localhost', 'root', '', 'CedHosting');
-$sql2=$db->Category_name();
+$sql2 = $db->Category_name();
 if (isset($_POST['submit'])) {
     $id = $_POST['sel'];
     $sub_category = $_POST['sub-category'];
@@ -27,6 +27,13 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('Category Added Successfully')</script>";
     }
 }
+if (isset($_REQUEST['delid'])) {
+    $delid = $_REQUEST['delid'];
+    echo "<script>alert('Deleted Successfully')</script>";
+    echo $db->Del_Cat($delid);
+    header("Refresh:0;url=category.php");
+}
+
 require 'AdminHeader.php';
 ?>
 <!-- Page content -->
@@ -93,39 +100,28 @@ require 'AdminHeader.php';
                 <?php $sql = $db->match_Category($key1['id']); ?>
                 <?php foreach ($sql as $key) { ?>
                     <tr>
+                        <td hidden><input type="hidden" value="<?php echo $key1['id'] ?>"></td>
                         <td>
                             <?php echo $key1['prod_name'] ?>
                         </td>
                         <td><?php echo $key['prod_name'] ?></td>
                         <td>
                             <select name="available" style="border:none;-webkit-appearance:none; padding:5px;">
-                                <option value="<?php if ($key['prod_available'] == '1') {
-                                                    echo '1';
-                                                } else {
-                                                    echo '0';
-                                                } ?>" selected="<?php if ($key['prod_available'] == '1') {
-                                                                    echo 'Available';
-                                                                } else {
-                                                                    echo 'Not Available';
-                                                                } ?>"><?php if ($key['prod_available'] == '1') {
-                                                                        echo 'Available';
-                                                                    } else {
-                                                                        echo 'Not Available';
-                                                                    } ?></option>
-                                <option value="<?php if ($key['prod_available'] == '1') {
-                                                    echo '0';
-                                                } else {
-                                                    echo '1';
-                                                } ?>"><?php if ($key['prod_available'] == '1') {
+                                <option value="" selected=""><?php if ($key['prod_available'] == '1') {
+                                                                            echo 'Available';
+                                                                        } else {
+                                                                            echo 'Not Available';
+                                                                        } ?></option>
+                                <option value=""><?php if ($key['prod_available'] == '1') {
                                                             echo 'Not Available';
                                                         } else {
                                                             echo 'Available';
                                                         } ?></option>
                             </select>
                         </td>
-                        <td><a href="../<?php echo $key['link'] ?>"><?php echo $key['link'] ?></a></td>
-                        <td><a href="#" class="btn btn-primary" name="update">Edit</a>
-                            <a href="#" class="btn btn-primary">Delete</a></td>
+                        <td><a href="../<?php echo $key['html'] ?>"><?php echo $key['html'] ?></a></td>
+                        <td><a href="edit_category.php?edit_id=<?php echo $key['id']; ?>" class="btn btn-primary" name="update">Edit</a>
+                        <td><a class="btn btn-primary" onClick="javascript: return confirm('Please confirm deletion');" href="category.php?delid=<?php echo $key['id'] ?>">Delete</a></td>
                     </tr>
             <?php }
             } ?>
