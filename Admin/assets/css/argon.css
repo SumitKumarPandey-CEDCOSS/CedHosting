@@ -890,7 +890,16 @@ pre code
     padding-right: 0;
     padding-left: 0;
 }
+input.valid.success-alert {
+    border: 2px solid #4CAF50;
+    color: green;
+}
 
+input.error, textarea.error {
+    border: 1px solid red;
+    font-weight: 300;
+    color: red;
+}
 .col-1,
 .col-2,
 .col-3,

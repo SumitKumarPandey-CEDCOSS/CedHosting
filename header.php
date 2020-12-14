@@ -132,7 +132,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <?php } ?>
                                 <ul class="dropdown-menu">
                                     <?php foreach ($sql as $key) { ?>
-                                        <li><a href="<?php echo $key['link'] ?>"><?php echo $key['prod_name']; ?></a></li>
+                                        <li><a href="<?php echo $key['html'] ?>"><?php echo $key['prod_name']; ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

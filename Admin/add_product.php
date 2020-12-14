@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Php version 7.2.10
  * 
@@ -13,7 +14,7 @@ require '../class/userClass.php';
 require '../class/product_class.php';
 $db = new Product();
 $db->connect('localhost', 'root', '', 'CedHosting');
-$sql2=$db->Sub_Category();
+$sql2 = $db->Sub_Category();
 if (isset($_POST['submit'])) {
     $sel = $_POST['sel'];
     $prod_name = $_POST['prod_name'];
@@ -26,7 +27,7 @@ if (isset($_POST['submit'])) {
     $free_domain = $_POST['free_domain'];
     $lang = $_POST['lang'];
     $mail = $_POST['mail'];
-    $features = array('web_space'=>$web_space, 'bandwidth'=>$bandwidth, 'free_domain'=>$free_domain, 'Language'=>$lang, 'mailbox'=>$mail);
+    $features = array('web_space' => $web_space, 'bandwidth' => $bandwidth, 'free_domain' => $free_domain, 'Language' => $lang, 'mailbox' => $mail);
     $features = json_encode($features);
     $db->add_product($sel, $prod_name, $url, $monthly_price, $annualy_price, $sku, $features);
 }
@@ -47,7 +48,7 @@ require 'AdminHeader.php';
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="">
+            <form method="POST" action="" id="demoForm">
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
                     <div class="row">
@@ -168,3 +169,45 @@ require 'AdminHeader.php';
         </div>
     </div>
     <?php require 'footer.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#demoForm").validate({
+                errorClass: "error fail-alert",
+                validClass: "valid success-alert",
+                rules: {
+                    prod_name: {
+                        required: true,
+                        minlength: 3
+                    },
+                    url: {
+                        required: true,
+                        number: true,
+                        min: 18
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                },
+                messages: {
+                    prod_name: {
+                        minlength: "Name should be at least 3 characters"
+                    },
+                    age: {
+                        required: "Please enter your age",
+                        number: "Please enter your age as a numerical value",
+                        min: "You must be at least 18 years old"
+                    },
+                    email: {
+                        email: "The email should be in the format: abc@domain.tld"
+                    },
+                    weight: {
+                        required: "People with age over 50 have to enter their weight",
+                        number: "Please enter your weight as a numerical value"
+                    }
+                }
+            });
+        });
+    </script>
