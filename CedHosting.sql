@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2020 at 03:47 PM
+-- Generation Time: Dec 14, 2020 at 04:11 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -83,7 +83,7 @@ CREATE TABLE `tbl_product` (
   `id` int(11) NOT NULL,
   `prod_parent_id` int(11) NOT NULL,
   `prod_name` varchar(100) NOT NULL,
-  `link` varchar(100) DEFAULT NULL,
+  `html` longtext DEFAULT NULL,
   `prod_available` tinyint(1) NOT NULL DEFAULT 1,
   `prod_launch_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -92,12 +92,13 @@ CREATE TABLE `tbl_product` (
 -- Dumping data for table `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`id`, `prod_parent_id`, `prod_name`, `link`, `prod_available`, `prod_launch_date`) VALUES
+INSERT INTO `tbl_product` (`id`, `prod_parent_id`, `prod_name`, `html`, `prod_available`, `prod_launch_date`) VALUES
 (1, 0, 'Hosting', NULL, 1, '2020-12-09 14:34:49'),
 (2, 1, 'Linux Hosting', 'linuxhosting.php', 1, '2020-12-10 13:17:03'),
 (4, 1, 'Windows Hosting', 'windowshosting.php', 1, '2020-12-10 13:45:01'),
-(5, 1, 'Wordpress Hosting', 'wordpresshosting.php', 1, '2020-12-10 13:45:14'),
-(6, 1, 'CMS Hosting', 'cmshosting.php', 1, '2020-12-10 13:45:32');
+(7, 1, 'CMS Hosting', 'cmshosting.php', 1, '2020-12-14 09:53:30'),
+(8, 2, 'Mac', 'machosting.com', 1, '2020-12-14 10:52:58'),
+(11, 2, 'MAC', 'machosting.com', 1, '2020-12-14 18:53:29');
 
 -- --------------------------------------------------------
 
@@ -113,6 +114,13 @@ CREATE TABLE `tbl_product_description` (
   `annual_price` float NOT NULL,
   `sku` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_product_description`
+--
+
+INSERT INTO `tbl_product_description` (`id`, `prod_id`, `description`, `mon_price`, `annual_price`, `sku`) VALUES
+(2, 11, '{\"web_space\":\"10\",\"bandwidth\":\"100\",\"free_domain\":\"www.google.com\",\"Language\":\"English\",\"mailbox\":\"mastertron399@gmail.com\"}', 2000, 24000, 'qwerty');
 
 -- --------------------------------------------------------
 
@@ -292,13 +300,13 @@ ALTER TABLE `tbl_orders`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_product_description`
 --
 ALTER TABLE `tbl_product_description`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_promocode`
