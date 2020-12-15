@@ -27,10 +27,10 @@ if (isset($_SESSION['data'])) {
                 <button type="submit" class="btn btn-primary">Verify</button>
             </div>
         </form>
-        <form action="email_verify.php" method="POST">
+        <form action="mobileOtp.php" method="POST">
             <div class="input">
                 <label for="">Mobile</label>
-                <input type="text" value="<?php echo $mobile ?>" />
+                <input type="text" name="mobile" value="<?php echo $mobile ?>" />
                 <button type="submit" class="btn btn-primary">Verify</button>
             </div>
         </form>

@@ -52,7 +52,7 @@ require 'AdminHeader.php';
         <div class="card-body">
             <form method="POST" action="">
             <?php if (isset($data)) { 
-            foreach ($data as $key) { ?>
+                foreach ($data as $key) { ?>
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
                     <div class="row">
@@ -116,12 +116,12 @@ require 'AdminHeader.php';
                 <hr class="my-4" />
                 <!-- Description -->
                 <?php
-                $features = json_decode($key['description']);
-                $webspace = $features->web_space;
-                $bandwidth = $features->bandwidth;
-                $free_domain = $features->free_domain;
-                $Language = $features->Language;
-                $mailbox = $features->mailbox;
+                    $features = json_decode($key['description']);
+                    $webspace = $features->web_space;
+                    $bandwidth = $features->bandwidth;
+                    $free_domain = $features->free_domain;
+                    $Language = $features->Language;
+                    $mailbox = $features->mailbox;
                 ?>
                 <h3>Features</h3>
                 <hr class="my-4" />

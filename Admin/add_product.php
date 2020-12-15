@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Php version 7.2.10
  * 
@@ -53,30 +52,33 @@ require 'AdminHeader.php';
                 <div class="pl-lg-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-username">Select Product Category</label>
-                                <select class="form-control" id="sel1" name="sel">
+                                <select id="select" class="form-control" id="sel1" name="sel">
                                     <option selected>Choose...</option>
                                     <?php foreach ($sql2 as $key) { ?>
                                         <option value="<?php echo $key['id'] ?>"><?php echo $key['prod_name'] ?></option>
                                     <?php } ?>
                                 </select>
+                                <span id="eb1" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Enter Product Name</label>
-                                <input type="text" name="prod_name" id="input-first-name" class="form-control" placeholder="Product name">
+                                <input type="text" name="prod_name" id="input1" class="form-control" placeholder="Product name">
+                                <span id="eb2" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Page URL</label>
-                                <input type="text" name="url" id="input-first-name" class="form-control" placeholder="Page URL">
+                                <input type="text" name="url" id="input2" class="form-control" placeholder="Page URL">
+                                <span id="eb3" class="error"></span>
                             </div>
                         </div>
                     </div>
@@ -89,25 +91,28 @@ require 'AdminHeader.php';
                 <div class="pl-lg-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Enter Monthly Price</label>
-                                <input id="input-address" name="monthly_price" class="form-control" placeholder="Enter Monthly Price" type="text">
+                                <input id="input3" name="monthly_price" class="form-control  decimal inputVal" placeholder="Enter Monthly Price" type="text">
+                                <span id="eb4" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Enter Annualy Price</label>
-                                <input id="input-address" name="annualy_price" class="form-control" placeholder="Enter Annualy Price" type="text">
+                                <input id="input4" name="annualy_price" class="form-control  decimal inputVal" placeholder="Enter Annualy Price" type="text">
+                                <span id="eb5" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">SKU</label>
-                                <input id="input-address" name="sku" class="form-control" placeholder="SKU" type="text">
+                                <input id="input5" name="sku" class="form-control" placeholder="SKU" type="text">
+                                <span id="eb6" class="error"></span>
                             </div>
                         </div>
                     </div>
@@ -119,17 +124,19 @@ require 'AdminHeader.php';
                 <div class="pl-lg-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Web Space(in GB) </label>
-                                <input id="input-address" name="web_space" class="form-control" placeholder="Web Space" type="text">
+                                <input id="input6" name="web_space" class="form-control  decimal inputVal" placeholder="Web Space" type="text">
+                                <span id="eb7" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Bandwidth (in GB)</label>
-                                <input id="input-address" name="bandwidth" class="form-control" placeholder="Bandwidth" type="text">
+                                <input id="input7" name="bandwidth" class="form-control  decimal inputVal" placeholder="Bandwidth" type="text">
+                                <span id="eb8" class="error"></span>
                             </div>
                         </div>
                     </div>
@@ -137,23 +144,26 @@ require 'AdminHeader.php';
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-first-name">Free Domain</label>
-                                <input id="input-address" name="free_domain" class="form-control" placeholder="Free Domain" type="text">
+                                <input id="input8" name="free_domain" class="form-control" placeholder="Free Domain" type="text">
+                                <span id="eb9" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Language / Technology Support</label>
-                                <input id="input-address" name="lang" class="form-control" placeholder="Language" type="text">
+                                <input id="input9" name="lang" class="form-control" placeholder="Language" type="text">
+                                <span id="eb10" class="error"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group has-error">
                                 <label class="form-control-label" for="input-first-name">Mailbox</label>
-                                <input id="input-address" name="mail" class="form-control" placeholder="Mailbox" type="text">
+                                <input id="input10" name="mail" class="form-control" placeholder="Mailbox" type="text">
+                                <span id="eb11" class="error"></span>
                             </div>
                         </div>
                     </div>
@@ -161,7 +171,7 @@ require 'AdminHeader.php';
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <div class="form-group">
-                            <input id="input-address" class="form-control btn btn-success" value="Create Now" name="submit" type="submit">
+                            <input id="submit" class="form-control btn btn-success" value="Create Now" name="submit" type="submit">
                         </div>
                     </div>
                 </div>
@@ -172,40 +182,200 @@ require 'AdminHeader.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>
+        var flag = 0;
         $(document).ready(function() {
-            $("#demoForm").validate({
-                errorClass: "error fail-alert",
-                validClass: "valid success-alert",
-                rules: {
-                    prod_name: {
-                        required: true,
-                        minlength: 3
-                    },
-                    url: {
-                        required: true,
-                        number: true,
-                        min: 18
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                },
-                messages: {
-                    prod_name: {
-                        minlength: "Name should be at least 3 characters"
-                    },
-                    age: {
-                        required: "Please enter your age",
-                        number: "Please enter your age as a numerical value",
-                        min: "You must be at least 18 years old"
-                    },
-                    email: {
-                        email: "The email should be in the format: abc@domain.tld"
-                    },
-                    weight: {
-                        required: "People with age over 50 have to enter their weight",
-                        number: "Please enter your weight as a numerical value"
+            $('#submit').attr('disabled', 'disabled');
+            $('.inputVal').keyup(function() {
+                var val = $(this).val();
+                if (isNaN(val)) {
+                    val = val.replace(/[^0-9\.]/g, '');
+                    if (val.split('.').length > 2)
+                        val = val.replace(/\.+$/, "");
+                }
+                $(this).val(val);
+            });
+
+            $('select').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb1').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                } else {
+                    $(this).css("border", "2px solid green");
+                    $('#eb1').html("");
+                    $("#submit").removeAttr('disabled');
+                }
+            });
+
+            $('#input1').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb2').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                }
+                if (val) {
+                    var pat = /^\d*?[a-zA-Z][a-zA-Z0-9\-]{1,}\d*$/i.test($("#input1").val());
+                    if (!pat) {
+                        $('#eb2').html("*Required");
+                        $(this).focus();
+                        $(this).css("border", "2px solid red");
+                        $('#submit').attr('disabled', 'disabled');
+                    } else {
+                        $(this).css("border", "2px solid green");
+                        $('#eb2').html("");
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            $('#input3').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb4').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                } else {
+                    $(this).css("border", "2px solid green");
+                    $('#eb4').html("");
+                    $("#submit").removeAttr('disabled');
+                }
+            });
+
+            $('#input4').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb5').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                } else {
+                    $(this).css("border", "2px solid green");
+                    $('#eb5').html("");
+                    $("#submit").removeAttr('disabled');
+                }
+            });
+
+            $('#input5').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb6').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                }
+                if (val) {
+                    var pat = /^\d?[a-zA-Z0-9#-]+?[a-zA-Z0-9][a-zA-Z0-9\-#]{1,}\d*$/i.test($("#input5").val());
+                    if (!pat) {
+                        $('#eb6').html("Only #,- allowed. Must contain 2 non-special characters !!");
+                        $(this).focus();
+                        $(this).css("border", "2px solid red");
+                        $('#submit').attr('disabled', 'disabled');
+                    } else {
+                        $(this).css("border", "2px solid green");
+                        $('#eb6').html("");
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            $('#input6').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb7').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                } else {
+                    $(this).css("border", "2px solid green");
+                    $('#eb7').html("");
+                    $("#submit").removeAttr('disabled');
+                }
+            });
+
+            $('#input7').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb8').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                } else {
+                    $(this).css("border", "2px solid green");
+                    $('#eb8').html("");
+                    $("#submit").removeAttr('disabled');
+                }
+            });
+
+            $('#input8').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb9').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                }
+                if (val) {
+                    var pat = /(^[0-9]*$)|(^[A-Za-z]+$)/i.test($("#input8").val());
+                    if (!pat) {
+                        $('#eb9').html("Only alphabetic/numeric values allowed.");
+                        $(this).focus();
+                        $(this).css("border", "2px solid red");
+                        $('#submit').attr('disabled', 'disabled');
+                    } else {
+                        $(this).css("border", "2px solid green");
+                        $('#eb9').html("");
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            $('#input9').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb10').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                }
+                if (val) {
+                    var pat = /^[a-zA-Z0-9]*[a-zA-Z]+[0-9]*(,?([a-zA-Z0-9]*[a-zA-Z]+[0-9]*)+)*$/i.test($("#input9").val());
+                    if (!pat) {
+                        $('#eb10').html("Only alphabetic/numeric values allowed.");
+                        $(this).focus();
+                        $(this).css("border", "2px solid red");
+                        $('#submit').attr('disabled', 'disabled');
+                    } else {
+                        $(this).css("border", "2px solid green");
+                        $('#eb10').html("");
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            $('#input10').blur(function() {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#eb11').html("*Required");
+                    $(this).focus();
+                    $(this).css("border", "2px solid red");
+                    $('#submit').attr('disabled', 'disabled');
+                }
+                if (val) {
+                    var pat = /(^[0-9]*$)|(^[A-Za-z]+$)/i.test($("#input10").val());
+                    if (!pat) {
+                        $('#eb11').html("Only alphabetic/numeric values allowed.");
+                        $(this).focus();
+                        $(this).css("border", "2px solid red");
+                        $('#submit').attr('disabled', 'disabled');
+                    } else {
+                        $(this).css("border", "2px solid green");
+                        $('#eb11').html("");
+                        $("#submit").removeAttr('disabled');
                     }
                 }
             });

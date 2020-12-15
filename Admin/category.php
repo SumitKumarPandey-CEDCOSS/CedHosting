@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     $link = $_POST['link'];
     $err = $db->check_category($id, $sub_category);
     if ($err == 0) {
-        $fields = array('prod_parent_id', 'prod_name', 'link');
+        $fields = array('prod_parent_id', 'prod_name', 'html');
         $values = array($id, $sub_category, $link);
         $db->insert($fields, $values, 'tbl_product');
         echo "<script>alert('Category Added Successfully')</script>";
@@ -61,7 +61,7 @@ require 'AdminHeader.php';
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"></span>
                                 </div>
-                                <input class="form-control" name="sub-category" placeholder="Sub-Category" type="text">
+                                <input class="form-control" name="sub-category" title="Enter Only Alphabatic" pattern="^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$" placeholder="Sub-Category" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -89,7 +89,6 @@ require 'AdminHeader.php';
                 <th class="th-sm">Category</th>
                 <th class="th-sm">Product Name</th>
                 <th class="th-sm">Availability</th>
-                <th class="th-sm">Link</th>
                 <th class="th-sm">Action</th>
             </tr>
         </thead>
@@ -108,20 +107,19 @@ require 'AdminHeader.php';
                         <td>
                             <select name="available" style="border:none;-webkit-appearance:none; padding:5px;">
                                 <option value="" selected=""><?php if ($key['prod_available'] == '1') {
-                                                                            echo 'Available';
-                                                                        } else {
-                                                                            echo 'Not Available';
-                                                                        } ?></option>
+                                                                    echo 'Available';
+                                                                } else {
+                                                                    echo 'Not Available';
+                                                                } ?></option>
                                 <option value=""><?php if ($key['prod_available'] == '1') {
-                                                            echo 'Not Available';
-                                                        } else {
-                                                            echo 'Available';
-                                                        } ?></option>
+                                                        echo 'Not Available';
+                                                    } else {
+                                                        echo 'Available';
+                                                    } ?></option>
                             </select>
                         </td>
-                        <td><a href="../<?php echo $key['html'] ?>"><?php echo $key['html'] ?></a></td>
                         <td><a href="edit_category.php?edit_id=<?php echo $key['id']; ?>" class="btn btn-primary" name="update">Edit</a>
-                        <td><a class="btn btn-primary" onClick="javascript: return confirm('Please confirm deletion');" href="category.php?delid=<?php echo $key['id'] ?>">Delete</a></td>
+                        <a class="btn btn-primary" onClick="javascript: return confirm('Please confirm deletion');" href="category.php?delid=<?php echo $key['id'] ?>">Delete</a></td>
                     </tr>
             <?php }
             } ?>

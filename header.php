@@ -114,17 +114,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><a href="about.php">About</a></li>
                             <li class="dropdown">
                                 <a href="services.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-                                <!-- <ul class="dropdown-menu"> -->
-                                <!-- <li><a href="#">Hosting</a></li> -->
-                                <!-- <li><a href="pricing.html">Pricing</a></li> -->
-                                <!-- <li><a href="faq.html">FAQ's</a></li>
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="history.html">History</a></li>
-											<li><a href="support.html">Support</a></li>
-											<li><a href="templatesetting.html">Template setting</a></li>
-											<li><a href="login.html">Login</a></li>
-											<li><a href="portfolio.html">Portfolio</a></li> -->
-                                <!-- </ul> -->
+<!-- <ul class="dropdown-menu"> -->
+<!-- <li><a href="#">Hosting</a></li> -->
+<!-- <li><a href="pricing.html">Pricing</a></li> -->
+<!-- <li><a href="faq.html">FAQ's</a></li>
+<li><a href="testimonials.html">Testimonials</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="support.html">Support</a></li>
+<li><a href="templatesetting.html">Template setting</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="portfolio.html">Portfolio</a></li> -->
+<!-- </ul> -->
                             </li>
                             <li class="dropdown">
                                 <?php foreach ($sql1 as $key) { ?>
@@ -132,7 +132,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <?php } ?>
                                 <ul class="dropdown-menu">
                                     <?php foreach ($sql as $key) { ?>
-                                        <li><a href="<?php echo $key['html'] ?>"><?php echo $key['prod_name']; ?></a></li>
+                                        <li><a href="CatPage.php?id=<?php echo $key['id'] ?>"><?php echo $key['prod_name']; ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

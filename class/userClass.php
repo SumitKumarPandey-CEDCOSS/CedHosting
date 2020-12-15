@@ -61,11 +61,17 @@ class User extends DB
         }
         return $sql;
     }
-    public function checkverify($email, $password) 
+    public function checkverify($email, $password)
     {
         $sql = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE `email`='$email' OR `password`='$password' AND `active`=0 ");
-        if (mysqli_num_rows($sql)>0) {
+        if (mysqli_num_rows($sql) > 0) {
             return $sql;
         }
+    }
+    public function verifiedOtp($number)
+    {
+        $st = 1;
+        $result1 = mysqli_query($this->conn, "UPDATE tbl_user SET `active`='$st', `phone_approved`='$st' WHERE `mobile`='$number'");
+        return 'Account Verified';
     }
 }

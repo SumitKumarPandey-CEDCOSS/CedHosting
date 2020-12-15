@@ -38,7 +38,6 @@ if (isset($_REQUEST['delid'])) {
                             <th class="th-sm proid">Catid</th>
                             <th class="th-sm">Category</th>
                             <th class="th-sm">Sub Category</th>
-                            <th class="th-sm">Link</th>
                             <th class="th-sm">prod_available</th>
                             <th class="th-sm">Launch Date</th>
                             <th class="th-sm">Monthly price</th>
@@ -59,7 +58,6 @@ if (isset($_REQUEST['delid'])) {
                                         <td><?php echo $key['id'] ?></td>
                                         <td>Hosting</td>
                                         <td><?php echo $key['prod_name'] ?></td>
-                                        <td><?php echo $key['html'] ?></td>
 
                                         <?php if ($key['prod_available'] == 1) {
                                             $avalb = "Yes";

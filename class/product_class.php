@@ -149,4 +149,20 @@ class Product extends DB
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
     }
+    public function showdata($edit)
+    {
+        $sql = "SELECT * FROM `tbl_product_description`  INNER JOIN `tbl_product` ON `tbl_product_description`.`prod_id` = `tbl_product`.`id` WHERE `prod_parent_id`='".$edit."'";
+        $result = $this->conn->query($sql);
+        if (mysqli_num_rows($result) > 0) {
+            return $result;
+        }
+    }
+    public function product_data($id) 
+    {
+        $sql = "SELECT * FROM `tbl_product_description`  INNER JOIN `tbl_product` ON `tbl_product_description`.`prod_id` = `tbl_product`.`id` WHERE `prod_id`='".$id."'";
+        $result = $this->conn->query($sql);
+        if (mysqli_num_rows($result) > 0) {
+            return $result;
+        }
+    }
 }
