@@ -61,7 +61,7 @@ require 'AdminHeader.php';
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></span>
                                         </div>
-                                        <input class="form-control" value="<?php echo $key['html'] ?>" name="link" placeholder="Link" type="text">
+                                        <textarea class="form-control" value="" name="link" placeholder="Link" ><?php echo $key['html'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">

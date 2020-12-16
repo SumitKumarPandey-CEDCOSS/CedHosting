@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Php version 7.2.10
  * 
@@ -27,8 +28,13 @@ if (isset($_REQUEST['id'])) {
         $free_domain = $description['free_domain'];
         $language = $description['Language'];
         $mailbox = $description['mailbox'];
-        // print_r($description);
-        // echo $id;
+        foreach ($_SESSION['cart'] as $key => $value) {
+            if ($id == $value['id']) {
+                echo '<script>alert("Item Already Added in Cart");
+                window.location.href="cart.php"</script>';
+                return;
+            }
+        }
     }
     $item = array(
         "id" => $id,
@@ -41,13 +47,8 @@ if (isset($_REQUEST['id'])) {
         "language" => $language,
         "mailbox" => $mailbox
     );
-    // session_destroy();
     $_SESSION['cart'][$id] = $item;
-    print_r($_SESSION['cart']);
     echo '<script>alert("Product Added Successfully");
     window.location.href="cart.php"</script>';
     return;
-    // print_r($description);
-
-    // echo $webspace,$bandwidth,$free_domain,$language,$mailbox;
 }

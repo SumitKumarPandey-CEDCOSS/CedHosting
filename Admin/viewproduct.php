@@ -67,8 +67,8 @@ if (isset($_REQUEST['delid'])) {
                                         ?>
                                         <td><?php echo $avalb ?></td>
                                         <td><?php echo $key['prod_launch_date'] ?></td>
-                                        <td><?php echo "₹" . $key['mon_price'] ?></td>
-                                        <td><?php echo "₹" . $key['annual_price'] ?></td>
+                                        <td><?php echo "$" . $key['mon_price'] ?></td>
+                                        <td><?php echo "$" . $key['annual_price'] ?></td>
                                         <?php
                                         $features = json_decode($key['description']);
                                         $webspace = $features->web_space;

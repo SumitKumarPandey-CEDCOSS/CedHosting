@@ -118,6 +118,7 @@ require 'AdminHeader.php';
                                                     } ?></option>
                             </select>
                         </td>
+                        <td><?php echo $key['html'] ?></td>
                         <td><a href="edit_category.php?edit_id=<?php echo $key['id']; ?>" class="btn btn-primary" name="update">Edit</a>
                         <a class="btn btn-primary" onClick="javascript: return confirm('Please confirm deletion');" href="category.php?delid=<?php echo $key['id'] ?>">Delete</a></td>
                     </tr>

@@ -21,6 +21,9 @@ if (!empty(isset($_SESSION['userdata']))) {
     $username = $_SESSION['userdata']['username'];
     $user = $_SESSION['userdata']['user_id'];
 }
+if (isset($_SESSION['cart'])) {
+    $data = count($_SESSION['cart']);
+}
 ?>
 <!--
 Author: W3layouts
@@ -114,17 +117,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><a href="about.php">About</a></li>
                             <li class="dropdown">
                                 <a href="services.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-<!-- <ul class="dropdown-menu"> -->
-<!-- <li><a href="#">Hosting</a></li> -->
-<!-- <li><a href="pricing.html">Pricing</a></li> -->
-<!-- <li><a href="faq.html">FAQ's</a></li>
-<li><a href="testimonials.html">Testimonials</a></li>
-<li><a href="history.html">History</a></li>
-<li><a href="support.html">Support</a></li>
-<li><a href="templatesetting.html">Template setting</a></li>
-<li><a href="login.html">Login</a></li>
-<li><a href="portfolio.html">Portfolio</a></li> -->
-<!-- </ul> -->
                             </li>
                             <li class="dropdown">
                                 <?php foreach ($sql1 as $key) { ?>
@@ -136,10 +128,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <?php } ?>
                                 </ul>
                             </li>
-                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="pricing.php">Pricing</a></li>
                             <li><a href="blog.php">Blog</a></li>
                             <li><a href="contact.php">Contact</a></li>
-                            <li><a href="#">Cart&nbsp;<i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="cart.php">Cart&nbsp;<i class="fa fa-shopping-cart"><span class="badge badge-pill badge-success"><?php if (isset($data)&&(isset($_SESSION['userdata']))) {
+                                                                                                                                                echo $data;
+                                                                                                                                            } ?></span></i></a></li>
                             <?php if (isset($username)) { ?>
                                 <li><a href="logout.php">Logout</a></li>
                             <?php } else { ?>
