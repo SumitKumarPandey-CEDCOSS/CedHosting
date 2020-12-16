@@ -41,7 +41,7 @@ try {
     $mailer->Host = 'ssl://smtp.gmail.com';
     $mailer->SMTPAuth = true;
     $mailer->Username = 'mastertron399@gmail.com';
-    $mailer->Password = '9125457091';
+    $mailer->Password = '';
     $mailer->SMTPSecure = 'ssl';
     $mailer->Port = 465;
 
