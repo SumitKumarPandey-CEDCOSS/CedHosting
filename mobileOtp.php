@@ -67,7 +67,7 @@ if (isset($_POST['verify'])) {
         $db->verifiedOtp($mobile);
         echo "<script>alert('Mobile has Been Verified')</script>";
         $msg = 'Mobile';
-        header('Refresh:0; url=verify.php?msg=' . $msg . '');
+        echo '<script>window.location.href="verify.php?msg=' . $msg . '"</script>';
     } else {
         echo "<script type='text/javascript'>alert('OTP Dosen't Match');</script>";
         unset($_SESSION['mobile']);
@@ -97,7 +97,6 @@ if (isset($_POST['verify'])) {
             </div>
             <button type="submit" name="submit" id="sign-up" class="btn btn-primary btn-ghost">Send OTP</button>
             <div id="val" class="pt-3 cyan-text"><?php echo "<b>" . $msg . "</b>" ?></div>
-            <a>OR<a>
             <a class="btn btn-primary btn-ghost" href="index.php">Back To Main Page</a>
         </form>
         <?php if (isset($_POST['submit'])) { ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Php version 7.2.10
  * 
@@ -28,7 +29,7 @@ if (isset($_POST['submit'])) {
     $mail = $_POST['mail'];
     $features = array('web_space' => $web_space, 'bandwidth' => $bandwidth, 'free_domain' => $free_domain, 'Language' => $lang, 'mailbox' => $mail);
     $features = json_encode($features);
-    $db->add_product($sel, $prod_name, $url, $monthly_price, $annualy_price, $sku, $features);
+    $msg = $db->add_product($sel, $prod_name, $url, $monthly_price, $annualy_price, $sku, $features);
 }
 
 require 'AdminHeader.php';
@@ -46,6 +47,12 @@ require 'AdminHeader.php';
                 </div>
             </div>
         </div>
+        <?php if (isset($msg)) {?>
+        <div class="alert alert-<?php echo $msg ?> alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!</strong> Product Added Successfully.
+        </div>
+        <?php } ?>
         <div class="card-body">
             <form method="POST" action="" id="demoForm">
                 <h6 class="heading-small text-muted mb-4">User information</h6>
@@ -182,7 +189,6 @@ require 'AdminHeader.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>
-        var flag = 0;
         $(document).ready(function() {
             $('#submit').attr('disabled', 'disabled');
             $('.inputVal').keyup(function() {

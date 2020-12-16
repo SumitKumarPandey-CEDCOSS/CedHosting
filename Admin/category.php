@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Php version 7.2.10
  * 
@@ -33,7 +32,6 @@ if (isset($_REQUEST['delid'])) {
     echo $db->Del_Cat($delid);
     header("Refresh:0;url=category.php");
 }
-
 require 'AdminHeader.php';
 ?>
 <!-- Page content -->
@@ -64,12 +62,22 @@ require 'AdminHeader.php';
                                 <input class="form-control" name="sub-category" title="Enter Only Alphabatic" pattern="^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$" placeholder="Sub-Category" type="text">
                             </div>
                         </div>
-                        <div class="form-group">
+                   <!-- <div class="form-group">
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"></span>
                                 </div>
                                 <input class="form-control" name="link" placeholder="Link" type="text">
+                            </div>
+                        </div> -->
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                <!-- <h1 class="h2 mb-4">Submit issue</h1> -->
+                                <label>HTML</label>
+                                <div class="form-group">
+                                    <textarea id="editor" name="link"></textarea>
+                                </div>
+                                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                             </div>
                         </div>
                         <div class="text-center">
@@ -89,6 +97,7 @@ require 'AdminHeader.php';
                 <th class="th-sm">Category</th>
                 <th class="th-sm">Product Name</th>
                 <th class="th-sm">Availability</th>
+                <th class="th-sm">HTML</th>
                 <th class="th-sm">Action</th>
             </tr>
         </thead>
@@ -120,7 +129,7 @@ require 'AdminHeader.php';
                         </td>
                         <td><?php echo $key['html'] ?></td>
                         <td><a href="edit_category.php?edit_id=<?php echo $key['id']; ?>" class="btn btn-primary" name="update">Edit</a>
-                        <a class="btn btn-primary" onClick="javascript: return confirm('Please confirm deletion');" href="category.php?delid=<?php echo $key['id'] ?>">Delete</a></td>
+                            <a class="btn btn-primary" onClick="javascript: return confirm('Please confirm deletion');" href="category.php?delid=<?php echo $key['id'] ?>">Delete</a></td>
                     </tr>
             <?php }
             } ?>
@@ -128,3 +137,17 @@ require 'AdminHeader.php';
     </table>
 </form>
 <?php require 'footer.php'; ?>
+<script src="https://cdn.tiny.cloud/1/xn6dhsq1jvngyvwxw1wjm3gay8ju5txppk1od4zx5cl8fek1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#editor',
+        menubar: false
+    });
+    tinymce.init({
+        selector: 'textarea#editor',
+        skin: 'bootstrap',
+        plugins: 'lists, link, image, media',
+        toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help',
+        menubar: false
+    });
+</script>

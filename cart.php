@@ -22,12 +22,13 @@ if (isset($_REQUEST['delid'])) {
     window.location.href='cart.php'</script>";
 }
 ?>
-
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <h2 class="text-center" style="padding:20px;"><img src="images/cart.png" class="img-responsive" style="margin-left:550px;" width="150px" height="150px" alt=""></h2>
+        <div class="row text-center">
+            <div class="col-sm-12 col-md-12 table-responsive">
+                <div class="col-sm-12 col-md-12">
+                <a href="#"><img src="images/cart.png" style="margin-left:40%;" class="img-responsive"  width="200px" height="200px" alt=""></a>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>

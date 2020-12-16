@@ -82,6 +82,7 @@ class Product extends DB
            VALUES ('" . $last_id . "','" . $monthly_price . "','" . $annualy_price . "','" . $sku . "','" . $features . "')";
             if ($this->conn->query($sql) === TRUE) {
                 echo '<script>alert("inserted")</script>';
+                return 'success';
             }
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
