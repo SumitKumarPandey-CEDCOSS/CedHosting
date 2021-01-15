@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => json_encode($fields),
         CURLOPT_HTTPHEADER => array(
-            "authorization: 8wuMLVSsekqiR2lYrETC57QWbcJfhNDjy9IXGOAKzdHPpUna1xct03179bUjmKfgdnBvSuzZXC4TyOx8",
+            "authorization: ",
             "accept: */*",
             "cache-control: no-cache",
             "content-type: application/json"
